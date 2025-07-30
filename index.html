@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar UI - Debug</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="stars" id="meteors"></div>
+
+    <!-- Nav bar to appear after intro is hidden -->
+    <div id="navbar">
+        <div class="home-button">
+        <button onclick="HomePage()" style="border: none; text-decoration: none; background: none; box-shadow: none;">← Back to Home</button>
+        </div>
+
+        <div class="link-buttons">
+        <button onclick="showSection('about')">About</button>
+        <button onclick="showSection('skills')">Skills</button>
+        <button onclick="showSection('projects')">Projects</button>
+        <button><a href="test.pdf" download>Resume</a></button>
+        <button onclick="showSection('contact')">Contact</button>
+        </div>
+    </div>
+
+    <!-- Intro Section -->
+    <section class="home">
+        <div class="homePage">
+            <div class="homePage-content">
+                <h2><span style="color: aqua;">Hi</span>, I'm Shreyansh <span class="mobile-hide">Sharma</span></h2>
+                <p>Front-End Web Developer |
+                    <span style="color: #fa5127;">HTML</span> •
+                    <span style="color: #26e433;">CSS</span> •
+                    <span style="color: #f0db4f;">JavaScript</span> •
+                    <span style="color: #84e0f9;">React</span>
+                </p>
+                <hr>
+                <div id="typeWriterText"></div>
+
+                <div class="btn-homepage link-buttons">
+                    <button onclick="showSection('about')">About Me</button>
+                    <button onclick="showSection('skills')">Skills</button>
+                    <button onclick="showSection('projects')">Projects</button>
+                    <button><a href="test.pdf" download>Resume</a></button>
+                    <button onclick="showSection('contact')">Contact</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content sections -->
+    <div id="content">
+        <div id="about" class="section-content">
+            <div class="about-me">
+                <h3>About Me</h3>
+                <p>
+                    Hi! I'm <span style="color:#4E89FF;">Shreyansh Sharma</span>, a <span
+                        style="color:#FFB200;">19-year-old</span> aspiring web developer from <span
+                        style="color:#00C897;">Delhi, India</span>, currently pursuing -<br/>
+                    <span style="color:#FF4E8E;">Bachelor's in Computer Applications</span> <br/>
+                    <span style="color:red;">Diploma in Full Stack Web Development</span>
+                </p>
+
+                <p>
+                    I'm passionate about crafting clean, user-friendly, and responsive web applications. I work with
+                    technologies like
+                    <span style="color:#4E89FF;">HTML</span>, <span style="color:#FF6B6B;">CSS</span>, <span
+                        style="color:#F7C548;">JavaScript</span>, <span style="color:#61DBFB;">React</span>, and <span
+                        style="color:#F1502F;">Git</span>.
+                </p>
+
+                <p>
+                    Alongside development, I'm upskilling in <span style="color:#A259FF;">Cybersecurity and Backend</span> through
+                    Coursera and diploma to deepen my understanding of secure coding practices — because great software should be
+                    both beautiful and safe.
+                </p>
+
+                <p>
+                    I consider myself a <span style="color:#FFA500;">creative thinker</span>, a <span
+                        style="color:#28C76F;">problem solver</span>, and a <span style="color:#E29578;">team
+                        player</span> who enjoys turning ideas into real, functional products. I'm always open to
+                    learning and leading wherever possible.
+                </p>
+
+                <p style="font-style: italic; color: #555;">
+                    "Code is not just about solving problems — it's about solving them beautifully."
+                </p>
+            </div>
+        </div>
+    
+
+    <div id="skills" class="section-content">
+    <h3 style="color: #00bfff; margin-bottom: 20px;font-size: 2rem;">Skills</h3>
+   <br>
+    <div class="card-holder">
+        <div class="skill-card"><span><img src="assests/html.png" alt="HTML"></span><p>HTML</p></div>
+        <div class="skill-card"><span><img src="assests/css.png" alt="CSS"></span><p>CSS</p></div>
+        <div class="skill-card"><span><img src="assests/bootstrap.png" alt="Bootstrap"></span><p>Bootstrap</p></div> 
+        <div class="skill-card"><span><img src="assests/js.png" alt="JavaScript"></span><p>JavaScript</p></div>
+        <div class="skill-card"><span><img src="assests/jquery.png" alt="jQuery"></span><p>jQuery</p></div>
+        <div class="skill-card"><span><img src="assests/react.png" alt="React"></span><p>React</p></div>
+        <div class="skill-card"><span><img src="assests/git.png" alt="Git"></span><p>Git & GitHub</p></div>
+        <div class="skill-card"><span><img src="assests/canva.png" alt="Canva"></span><p>Canva</p></div>
+        <div class="skill-card"><span><img src="assests/globee.png" alt="Hosting"></span><p>Hosting & Domain</p></div>
+    </div>
+</div>
+
+    <div id="projects" class="section-content">
+        <h3 style="color: #00bfff; margin-bottom: 20px;">Projects</h3>
+        <div class="project-card"><span><img src="assests/typing.png" alt="HTML"></span><p>HTML</p></div>
+    </div>
+
+    <div id="contact" class="section-content">
+        <h3 style="color: #00bfff; margin-bottom: 20px;">Contact</h3>
+        <p>Contact me at: your@email.com</p>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
