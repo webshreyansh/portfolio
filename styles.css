@@ -11,7 +11,6 @@ html {
 body {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
     color: #fff;
 }
 
@@ -347,6 +346,7 @@ button a {
     transition: opacity 0.4s ease;
     justify-content: center;
     align-items: center;
+     overflow: auto;
 }
 
 .section-content.fade-in {
@@ -357,7 +357,9 @@ button a {
     max-width: 800px;
 
 }
-
+.about-me {
+     overflow :auto;
+}
 .about-me h3 {
     text-align: left;
     margin-bottom: 20px;
@@ -378,6 +380,7 @@ button a {
     background-color: rgba(10, 25, 47, 0.8);
     text-align: start;
     flex-direction: column;
+    
 }
 
 .card-holder {
@@ -389,6 +392,7 @@ button a {
     padding: 20px 0;
     width: 100%;
     height: auto;
+     overflow: auto;
 }
 
 .skill-card {
