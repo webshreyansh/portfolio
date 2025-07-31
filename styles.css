@@ -4,13 +4,55 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
     color: #fff;
 }
 
+/* Splash Screen */
+#splashScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#welcomeText {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: dropFade 1.5s ease-out forwards;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes dropFade {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+}
+
+/* Stars Background */
 .stars {
     width: 100%;
     height: 100%;
@@ -18,7 +60,6 @@ body {
     top: 0;
     left: 0;
     background: transparent;
-    overflow: hidden;
     z-index: -1;
 }
 
@@ -41,15 +82,8 @@ body {
 }
 
 @keyframes twinkle {
-
-    0%,
-    100% {
-        opacity: 0.3;
-    }
-
-    50% {
-        opacity: 1;
-    }
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
 
 @keyframes fall {
@@ -57,25 +91,21 @@ body {
         transform: translate(-2000px, -200vh) rotate(-45deg) scale(0);
         opacity: 1;
     }
-
     10% {
         transform: translate(-1800px, -180vh) rotate(-45deg) scale(1);
         opacity: 1;
     }
-
     90% {
         transform: translate(1800px, 180vh) rotate(-45deg) scale(1);
         opacity: 0.8;
     }
-
     100% {
         transform: translate(2000px, 200vh) rotate(-45deg) scale(0);
         opacity: 0;
     }
 }
 
-
-
+/* Home Page */
 .home {
     display: flex;
     justify-content: center;
@@ -88,6 +118,7 @@ body {
 .homePage-content {
     text-align: center;
     z-index: 2;
+    padding: 0 20px;
 }
 
 .homePage-content h2 {
@@ -123,6 +154,7 @@ body {
     }
 }
 
+/* Buttons */
 .btn-homepage {
     display: flex;
     flex-wrap: wrap;
@@ -162,7 +194,7 @@ button {
     transition: left 0.4s ease;
 }
 
-button:hover::before {
+.link-buttons button:hover::before {
     left: 0;
 }
 
@@ -178,35 +210,136 @@ button a {
     color: inherit;
 }
 
+/* Navbar */
 #navbar {
     width: 100%;
     display: none;
     justify-content: space-between;
+    align-items: center;
     gap: 16px;
-    margin: 10px auto;
-    padding: 0 20px;
+    padding: 15px 20px;
     position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
+.home-button button {
+    border: none;
+    background: none;
+    box-shadow: none;
+    color: #00bfff;
+    font-size: 1rem;
+    padding: 8px 16px;
+}
+
+.home-button button:hover {
+    color: #64ffda;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(10, 25, 47, 0.98);
+    backdrop-filter: blur(20px);
+    transition: right 0.3s ease;
+    z-index: 999;
+    padding-top: 80px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+}
+
+.mobile-menu-links button {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+}
+
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Content & Sections */
 #content {
     width: 100%;
-    display: none;
-    height: auto;
-    padding: 80px 20px 20px;
+    display: flex;
+    padding: 100px 20px 20px;
     position: relative;
     z-index: 2;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
 }
 
 .section-content {
-    display: none;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    width: 100%;
+    height: auto;
+    max-width: 1200px;
+    margin: 0 auto;
     font-size: 1.2rem;
     padding: 40px;
-    background-color: #0a192f;
+    background-color: rgba(10, 25, 47, 0.8);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -221,7 +354,8 @@ button a {
 }
 
 #about {
-    width: 50%;
+    max-width: 800px;
+
 }
 
 .about-me h3 {
@@ -237,46 +371,29 @@ button a {
     text-align: left;
 }
 
-
-
-@media (max-width: 600px) {
-    .mobile-hide {
-        display: none;
-    }
-
-    .homePage-content h2 {
-        font-size: 2rem;
-    }
-
-    .btn-homepage {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    button {
-        width: 200px;
-    }
-}
-
-
+/* Skills Section */
 #skills {
-    width: 600px;
-    padding: 40px 0;
-    background-color: #0a192f;
+    max-width: 900px;
+    padding: 40px;
+    background-color: rgba(10, 25, 47, 0.8);
+    text-align: start;
     flex-direction: column;
-    text-align: center;
 }
 
 .card-holder {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 20px;
-    padding: 0 20px;
+    padding: 20px 0;
+    width: 100%;
+    height: auto;
 }
 
 .skill-card {
-    width: 160px;
+    width: auto;
+    min-width: 160px;
     height: 140px;
     background-color: #112240;
     border: 2px solid #00bfff;
@@ -291,7 +408,6 @@ button a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 .skill-card:hover {
@@ -300,8 +416,6 @@ button a {
 }
 
 .skill-card img {
-
-
     width: 40px;
     height: 40px;
     margin-bottom: 10px;
@@ -312,40 +426,37 @@ button a {
     font-size: 1rem;
 }
 
-
-/* project styling */
-
+/* Projects Section */
 #projects {
-    width: 70%;
-    /* padding: 60px 20px; */
-    background-color: #0a192f;
+    max-width: 1200px;
+    background-color: rgba(10, 25, 47, 0.8);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
+}
+
+#projects h3 {
+    color: #00bfff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
 }
 
 .project-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
     justify-content: center;
+    align-items: center;
+    gap: 30px;
     width: 100%;
-    max-width: 1200px;
-}
-
-
-#projects h3 {
-    color: #00bfff;
-    margin-bottom: 40px;
-    font-size: 2rem;
-    font-weight: bold;
 }
 
 .project-card {
     background-color: #112240;
     width: 300px;
-    height: 360px;
+    min-height: 360px;
     border: 2px solid #1f2937;
     border-radius: 15px;
     text-align: center;
@@ -376,6 +487,7 @@ button a {
     margin: 10px 0;
     font-size: 1.1rem;
     color: #ccd6f6;
+    flex-grow: 1;
 }
 
 .project-card button {
@@ -387,8 +499,173 @@ button a {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease;
+    margin-top: auto;
 }
 
 .project-card button:hover {
     background-color: #009acd;
+}
+
+/* Contact Section */
+#contact {
+    background-color: rgba(10, 25, 47, 0.8);
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+#contact h3 {
+    font-size: 2rem;
+    color: #00bfff;
+    margin-bottom: 20px;
+}
+
+.contact-content {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 12px;
+    width: auto;
+    color: #ccd6f6;
+    font-weight: 500;
+}
+
+.contact-content p {
+    margin: 15px 0;
+    font-size: 1rem;
+    color: #a8b2d1;
+}
+
+.contact-content a {
+    color: #00bfff;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-content a:hover {
+    color: #64ffda;
+    text-decoration: underline;
+}
+
+.contact-content i {
+    margin-right: 8px;
+    color: #00bfff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mobile-hide {
+        display: none;
+    }
+
+    .homePage-content h2 {
+        font-size: 2rem;
+    }
+
+    .homePage-content p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    #typeWriterText {
+        font-size: 1rem;
+    }
+
+    .btn-homepage {
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px 10px;
+    }
+
+    .btn-homepage button {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    #navbar .link-buttons {
+        display: none;
+    }
+
+    .btn-homepage .link-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #navbar {
+        padding: 15px 20px;
+    }
+
+    #content {
+        padding: 80px 15px 20px;
+    }
+
+    .section-content {
+        padding: 20px 15px;
+        font-size: 1rem;
+    }
+
+    .card-holder,
+    .project-container {
+        flex-direction: column;
+    }
+
+    .skill-card {
+        height: 120px;
+        min-width: 140px;
+    }
+
+    .skill-card img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .project-card {
+        min-height: 320px;
+    }
+
+    .project-card img {
+        height: 150px;
+    }
+
+    .about-me h3,
+    #skills h3,
+    #projects h3,
+    #contact h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .homePage-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .btn-homepage {
+        gap: 14px;
+    }
+
+    .section-content {
+        padding: 30px;
+    }
+
+    #content {
+        padding: 90px 20px 20px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .link-buttons {
+        display: flex;
+    }
+
+    .hamburger {
+        display: none;
+    }
 }

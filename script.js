@@ -1,4 +1,16 @@
-// Generate stars
+ // Wait a moment then fade out splash
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splashScreen').classList.add('fade-out');
+      }, 2200);
+
+      // Remove splash after fade
+      setTimeout(() => {
+        const splash = document.getElementById('splashScreen');
+        if (splash) splash.remove();
+      }, 3500);
+    });
+
 const starsContainer = document.getElementById('stars');
 for (let i = 0; i < 100; i++) {
     const star = document.createElement('div');
@@ -25,7 +37,7 @@ for (let i = 0; i < 4; i++) {
 // Typewriter effect function
 function typeWriterEffect(text, elementId, speed = 50) {
     const element = document.getElementById(elementId);
-    element.textContent = ''; // Clear any existing content
+    element.textContent = '';
     let index = 0;
 
     const interval = setInterval(() => {
@@ -38,26 +50,39 @@ function typeWriterEffect(text, elementId, speed = 50) {
         }
     }, speed);
 }
+setTimeout(() => {
+    typeWriterEffect("Bringing designs to life with precision and creativity.", "typeWriterText"); 
+},2500)
 
-// Initialize typewriter effect
-typeWriterEffect("Bringing designs to life with precision and creativity.", "typeWriterText");
 
-// Function to show sections
+// Mobile menu functions
+function toggleMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileOverlay');
+
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+
+function closeMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileOverlay');
+
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
+// Function to show sections (for desktop)
 function showSection(id) {
-    console.log('showSection called with id:', id); // Debug log
-
     const intro = document.querySelector('.home');
     const contentContainer = document.getElementById('content');
     const navbar = document.getElementById('navbar');
     const allSections = document.querySelectorAll('.section-content');
     const targetSection = document.getElementById(id);
-
-    console.log('Elements found:', {
-        intro: !!intro,
-        contentContainer: !!contentContainer,
-        navbar: !!navbar,
-        targetSection: !!targetSection
-    }); // Debug log
 
     // Hide intro
     if (intro) {
@@ -89,14 +114,21 @@ function showSection(id) {
     }
 }
 
+// Function to show sections from mobile menu
+function showSectionMobile(id) {
+    showSection(id);
+    closeMobileMenu();
+}
+
 // Function to show home page
 function HomePage() {
-    console.log('HomePage called'); // Debug log
-
     const intro = document.querySelector('.home');
     const contentContainer = document.getElementById('content');
     const navbar = document.getElementById('navbar');
     const allSections = document.querySelectorAll('.section-content');
+    const nav_btn = document.getElementById('navLinks')
+    // Close mobile menu if open
+    closeMobileMenu();
 
     // Show intro
     if (intro) {
@@ -119,3 +151,17 @@ function HomePage() {
         section.classList.remove('fade-in');
     });
 }
+
+// Close mobile menu when clicking outside or on window resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
+    }
+});
+
+// Handle escape key to close mobile menu
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeMobileMenu();
+    }
+});

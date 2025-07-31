@@ -6,27 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar UI - Debug</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+     <div id="splashScreen">
+    <div id="welcomeText">Welcome to My Portfolio</div>
+  </div>
+
     <div class="stars" id="stars"></div>
     <div class="stars" id="meteors"></div>
 
     <!-- Nav bar to appear after intro is hidden -->
     <div id="navbar">
         <div class="home-button">
-        <button onclick="HomePage()" style="border: none; text-decoration: none; background: none; box-shadow: none;">← Back to Home</button>
+            <button onclick="HomePage()">← Back to Home</button>
         </div>
 
-        <div class="link-buttons">
-        <button onclick="showSection('about')">About</button>
-        <button onclick="showSection('skills')">Skills</button>
-        <button onclick="showSection('projects')">Projects</button>
-        <button><a href="test.pdf" download>Resume</a></button>
-        <button onclick="showSection('contact')">Contact</button>
+        <!-- Desktop Navigation links -->
+        <div class="link-buttons" id="navLinks">
+            <button onclick="showSection('about')">About</button>
+            <button onclick="showSection('skills')">Skills</button>
+            <button onclick="showSection('projects')">Projects</button>
+            <button><a href="test.pdf" download>Resume</a></button>
+            <button onclick="showSection('contact')">Contact</button>
+        </div>
+
+        <!-- Hamburger menu for mobile/tablet -->
+        <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
+   
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-links">
+            <button onclick="showSectionMobile('about')">About</button>
+            <button onclick="showSectionMobile('skills')">Skills</button>
+            <button onclick="showSectionMobile('projects')">Projects</button>
+            <button><a href="test.pdf" download>Resume</a></button>
+            <button onclick="showSectionMobile('contact')">Contact</button>
+        </div>
+    </div>
+ <!-- Mobile menu overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     <!-- Intro Section -->
     <section class="home">
         <div class="homePage">
@@ -60,8 +89,8 @@
                 <p>
                     Hi! I'm <span style="color:#4E89FF;">Shreyansh Sharma</span>, a <span
                         style="color:#FFB200;">19-year-old</span> aspiring web developer from <span
-                        style="color:#00C897;">Delhi, India</span>, currently pursuing -<br/>
-                    <span style="color:#FF4E8E;">Bachelor's in Computer Applications</span> <br/>
+                        style="color:#00C897;">Delhi, India</span>, currently pursuing -<br />
+                    <span style="color:#FF4E8E;">Bachelor's in Computer Applications</span> <br />
                     <span style="color:red;">Diploma in Full Stack Web Development</span>
                 </p>
 
@@ -74,8 +103,10 @@
                 </p>
 
                 <p>
-                    Alongside development, I'm upskilling in <span style="color:#A259FF;">Cybersecurity and Backend</span> through
-                    Coursera and diploma to deepen my understanding of secure coding practices — because great software should be
+                    Alongside development, I'm upskilling in <span style="color:#A259FF;">Cybersecurity and
+                        Backend</span> through
+                    Coursera and diploma to deepen my understanding of secure coding practices — because great software
+                    should be
                     both beautiful and safe.
                 </p>
 
@@ -91,62 +122,93 @@
                 </p>
             </div>
         </div>
-    
 
-    <div id="skills" class="section-content">
-    <h3 style="color: #00bfff; margin-bottom: 20px;font-size: 2rem;">Skills</h3>
-   <br>
-    <div class="card-holder">
-        <div class="skill-card"><span><img src="assests/html.png" alt="HTML"></span><p>HTML</p></div>
-        <div class="skill-card"><span><img src="assests/css.png" alt="CSS"></span><p>CSS</p></div>
-        <div class="skill-card"><span><img src="assests/bootstrap.png" alt="Bootstrap"></span><p>Bootstrap</p></div> 
-        <div class="skill-card"><span><img src="assests/js.png" alt="JavaScript"></span><p>JavaScript</p></div>
-        <div class="skill-card"><span><img src="assests/jquery.png" alt="jQuery"></span><p>jQuery</p></div>
-        <div class="skill-card"><span><img src="assests/react.png" alt="React"></span><p>React</p></div>
-        <div class="skill-card"><span><img src="assests/git.png" alt="Git"></span><p>Git & GitHub</p></div>
-        <div class="skill-card"><span><img src="assests/canva.png" alt="Canva"></span><p>Canva</p></div>
-        <div class="skill-card"><span><img src="assests/globee.png" alt="Hosting"></span><p>Hosting & Domain</p></div>
-    </div>
-</div>
-<div id="projects" class="section-content">
-    <div class="project-h">
-    <h3 style="color: #00bfff; margin-bottom: 20px;">Projects</h3>
-    </div>
-<br/>
+        <div id="skills" class="section-content">
+            <h3 style="color: #00bfff; margin-bottom: 20px;font-size: 2rem;">Skills</h3>
+            <div class="card-holder">
+                <div class="skill-card">
+                    <span><img src="assests/html.png" alt="HTML"></span>
+                    <p>HTML</p>
+                </div>
+                <div class="skill-card">
+                    <span><img src="assests/css.png" alt="CSS"></span>
+                    <p>CSS</p>
+                </div>
+                <div class="skill-card">
+                    <span><img src="assests/bootstrap.png" alt="Bootstrap"></span>
+                    <p>Bootstrap</p>
+                </div>
+                <div class="skill-card">
+                    <span><img src="assests/js.png" alt="JavaScript"></span>
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <span><img src="assests/jquery.png" alt="jQuery"></span>
+                    <p>jQuery</p>
+                </div>
+                <div class="skill-card">
+                    <span><img src="assests/react.png" alt="React"></span>
+                    <p>React</p>
+                </div>
+                <div class="skill-card">
+                    <span><img src="assests/git.png" alt="Git"></span>
+                    <p>Git & GitHub</p>
+                </div>
+                <div class="skill-card">
+                    <span><img src="assests/canva.png" alt="Canva"></span>
+                    <p>Canva</p>
+                </div>
+                <div class="skill-card">
+                    <span><img src="assests/globee.png" alt="Hosting"></span>
+                    <p>Hosting & Domain</p>
+                </div>
+            </div>
+        </div>
 
-<div class="project-container">
-    <div class="project-card">
-        <span><img src="assests/typing.png" alt="HTML"></span>
-        <p>HTML</p>
-        <button>View Project</button>
+        <div id="projects" class="section-content">
+            <h3>Projects</h3>
+            <div class="project-container">
+                <div class="project-card">
+                    <span><img src="assests/typing.png" alt="Typing Test"></span>
+                    <p>Typing Speed Test</p>
+                    <button>View Project</button>
+                </div>
+
+                <div class="project-card">
+                    <span><img src="assests/calc.png" alt="Calculator"></span>
+                    <p>Calculator App</p>
+                    <button>View Project</button>
+                </div>
+
+                <div class="project-card">
+                    <span><img src="assests/recipe.png" alt="Recipe App"></span>
+                    <p>Recipe Finder</p>
+                    <button>View Project</button>
+                </div>
+
+                <div class="project-card">
+                    <span><img src="assests/to-do.png" alt="Todo App"></span>
+                    <p>Todo List App</p>
+                    <button>View Project</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="section-content">
+            <h3>Contact</h3>
+            <div class="contact-content">
+                <p style="color: rgb(157, 157, 157);">If you have any questions, suggestions, or just want to say hi, feel free to reach out!</p>
+                <p>Email 📧 <a href="mailto:11.shreyanshsharma@gmail.com" target="_blank">11.shreyanshsharma@gmail.com</a></p>
+                <p>LinkedIn <i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/shreyansh-sharma-674ba62b2/?trk=public-profile-join-page" target="_blank">Shreyansh Sharma</a></p>
+                <p>GitHub <i class="fa-brands fa-github"></i> <a href="https://github.com/webshreyansh" target="_blank">webshreyansh</a></p>
+            </div>
+            
+            <footer style="font-style: italic; color: #555; margin-top: 20px;">
+                <p>Thanks for stopping by — wishing you a day full of creativity and code!</p>
+            </footer>
+        </div>
     </div>
 
-    <div class="project-card">
-        <span><img src="assests/calc.png" alt="HTML"></span>
-        <p>HTML</p>
-        <button>View Project</button>
-    </div>
-
-    <div class="project-card">
-        <span><img src="assests/recipe.png" alt="HTML"></span>
-        <p>HTML</p>
-        <button>View Project</button>
-    </div>
-
-    <div class="project-card">
-        <span><img src="assests/to-do.png" alt="HTML"></span>
-        <p>HTML</p>
-        <button>View Project</button>
-    </div>
-    </div>
-</div>
-
-
-    <div id="contact" class="section-content">
-        <h3 style="color: #00bfff; margin-bottom: 20px;">Contact</h3>
-        <p>Contact me at: your@email.com</p>
-    </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
