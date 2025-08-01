@@ -4,14 +4,11 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #fff;
+    overflow: hidden;
 }
 
 /* Splash Screen */
@@ -27,7 +24,6 @@ body {
     transition: opacity 1s ease, transform 1s ease;
 }
 
-/* IOBNUJIBNIBNHBNohnff */
 
 #welcomeText {
     color: #ffffff;
@@ -115,6 +111,7 @@ body {
     position: relative;
     z-index: 1;
 }
+
 
 .homePage-content {
     text-align: center;
@@ -329,7 +326,6 @@ button a {
     z-index: 2;
     align-items: center;
     justify-content: center;
-    overflow: auto;
 }
 
 .section-content {
@@ -348,7 +344,6 @@ button a {
     transition: opacity 0.4s ease;
     justify-content: center;
     align-items: center;
-     overflow: auto;
 }
 
 .section-content.fade-in {
@@ -359,9 +354,7 @@ button a {
     max-width: 800px;
 
 }
-.about-me {
-     overflow :auto;
-}
+
 .about-me h3 {
     text-align: left;
     margin-bottom: 20px;
