@@ -103,6 +103,10 @@ body {
 }
 
 /* Home Page */
+
+.link-buttons{
+    gap: 10px;
+}
 .home {
     display: flex;
     justify-content: center;
@@ -161,9 +165,11 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    
 }
 
 button {
+    width: auto;
     padding: 12px 24px;
     cursor: pointer;
     font-weight: 600;
