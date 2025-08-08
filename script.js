@@ -8,7 +8,9 @@
       setTimeout(() => {
         const splash = document.getElementById('splashScreen');
         if (splash) splash.remove();
-      }, 3500);
+
+        HomePage()
+      }, 2300);
     });
 
 const starsContainer = document.getElementById('stars');
